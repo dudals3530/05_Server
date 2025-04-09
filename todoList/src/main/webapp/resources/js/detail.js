@@ -32,13 +32,34 @@ completeBtn.addEventListener("click", () => {
 
 // 수정 버튼
 const updateBtn = document.querySelector("#updateBtn");
-updateBtn.addEventListener("click", () => {
-  const mainBtnContainer = document.querySelector("#mainBtnContainer");
-  const hiddenBtnContainer = document.querySelector("#hiddenBtnContainer");
+updateBtn.addEventListener("click", ()=>{
 
-  mainBtnContainer.classList.add("hidden");
-  hiddenBtnContainer.classList.remove("hidden");
+  //수정할수 있는 화면을  요청 (Get방식)
+  location.href="/todo/update?todoNo=" + todoNo;
+
+});
   
+
   
     
+
+
+//삭제 버튼
+const deleteBtn = document.querySelector("#deleteBtn");
+deleteBtn.addEventListener("click", ()=>{
+
+  //정말 삭제할것인지 confirm()을 이용해서 확인
+  //confirm()은 확인 클릭시 true, 취소 클릭시 false 반환
+
+ // 취소 클릭시
+  if (!confirm("정말 삭제하시겠습니까?")) return;
+
+  //확인 클릭시
+  //  /todo/delete?todoNo=6  Get 방식 요청 보내기 
+  location.href = "/todo/delete?todoNo=" + todoNo;
+
+
+  
+
+
 });

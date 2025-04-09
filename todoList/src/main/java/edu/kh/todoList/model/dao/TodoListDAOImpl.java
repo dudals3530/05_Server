@@ -224,7 +224,71 @@ public class TodoListDAOImpl implements TodoListDAO{
 			
 		}finally {
 			
+			close(rs);
+			close (pstmt);
 		}
+		
+		return result;
+	}
+
+
+
+
+
+
+	@Override
+	public int todoDelete(Connection conn, int todoNo) throws Exception {
+		
+		int result = 0;
+		
+		
+		try {
+			String sql = prop.getProperty("todoDelete");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, todoNo);
+			
+			result =pstmt.executeUpdate();
+			
+			
+		
+		}finally {
+			
+			close(pstmt);
+		}
+			
+		
+		
+		return result;
+	}
+
+
+
+
+
+
+	@Override
+	public int todoUpdate(Connection conn, int todoNo, String title, String detail) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("todoUpdate");
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, detail);
+			pstmt.setInt(3, todoNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			
+			close(pstmt);
+			
+		}
+		
 		
 		return result;
 	}

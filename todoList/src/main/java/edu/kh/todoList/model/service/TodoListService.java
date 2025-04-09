@@ -29,6 +29,10 @@ public interface TodoListService {
 	// 완료여부 변경서비스
 	int todoComplete(int todoNo) throws Exception;
 
+	int todoDelete(int todoNo) throws Exception;
+
+	int todoUpdate(int todoNo, String title, String detail) throws Exception;
+
 	
 		
 	
